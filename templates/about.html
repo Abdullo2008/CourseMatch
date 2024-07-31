@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .container {
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    p {
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container">
+    <h2>About Me</h2>
+    <p style="font-size: 18px;">Hello! I'm a 15-year-old junior developer passionate about coding and technology.
+        Despite my age, I've dedicated myself to learning and mastering various programming skills. As a junior
+        developer, I focus on backend development and I'm always eager to tackle new challenges and projects.<br><br>
+
+        In addition to my development work, I enjoy exploring new tech trends, contributing to open-source projects, and
+        sharing my knowledge with others. That’s why I created this website—to help beginners who are just starting
+        their programming journey. Through clear tutorials, interactive challenges, and practical projects, my site aims
+        to make learning to code accessible and enjoyable for everyone.<br><br>
+
+        When I'm not coding or working on my site, you can find me reading a good book or engaging with the tech
+        community. If you have any questions or are interested in collaborating on projects, feel free to reach out!</p>
+    <figure class="text-end">
+        <figcaption class="blockquote-footer">
+            <cite title="Source Title">Abdullo Igamberdiyev</cite>
+        </figcaption>
+    </figure>
+</div>
+
+{% endblock content %}

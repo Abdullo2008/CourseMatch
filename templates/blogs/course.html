@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<center>
+
+</center>
+<style>
+    .container {
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    p {
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container">
+    {% if blogs %}
+    {% for count, blog in blogs %}
+    <p>blog #{{ count }}. Added in {{ blog.date_added }}</p>
+    <p>{{ blog.blog }}</p>
+    {% if user.is_superuser %}
+    <a href="{% url 'updateblog' blog.id %}">
+        <button type="button" class="btn btn-warning btn-sm">Update</button>
+    </a>
+    <a href="{% url 'deleteblog' blog.id %}">
+        <button type="button" class="btn btn-danger btn-sm">Delete</button>
+    </a>
+    {% endif %}
+    <br><br><br><br>
+    {% endfor %}
+    {% else %}
+        <h2>No Blogs Yet. <a href="{% url 'courses' %}">View other courses</a></h2>
+    {% endif %}
+
+</div>
+<br>
+
+{% endblock content %}

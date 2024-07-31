@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .container {
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    p {
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container">
+    <h2>Your profile</h2><br>
+    <div>
+        <fieldset>
+            <label class="form-label mt-4" for="Username">Username</label>
+            <input class="form-control" id="Username" type="text" value="{{ user.username }}"
+                   placeholder=Username" readonly>
+        </fieldset>
+    </div>
+    <div>
+        <fieldset>
+            <label class="form-label mt-4" for="first_name">First Name</label>
+            <input class="form-control" id="first_name" type="text" value="{{ user.first_name }}"
+                   placeholder="First name" readonly>
+        </fieldset>
+    </div>
+    <div>
+        <fieldset>
+            <label class="form-label mt-4" for="last_name">Last Name</label>
+            <input class="form-control" id="last_name" type="text" value="{{ user.last_name }}"
+                   placeholder="Last name" readonly>
+        </fieldset>
+    </div>
+    <div>
+        <fieldset>
+            <label class="form-label mt-4" for="email">Email</label>
+            <input class="form-control" id="email" type="text" value="{{ user.email }}"
+                   placeholder="Email" readonly>
+        </fieldset>
+    </div>
+    <div>
+        <fieldset>
+            <label class="form-label mt-4" for="password">Password</label>
+            <input class="form-control" id="password" type="text" value="{{ user.password }}"
+                   placeholder="Password" readonly>
+        </fieldset>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Categories</h2><br>
+    {% for category in categories %}
+    <ul>
+        <li><a href="{% url 'single_category' category.id %}">{{ category.name }}</a></li>
+    </ul>
+    {% endfor %}
+    <div class="row">
+        {% for curse in curses %}
+        <div class="col-md-4 mb-3">
+            <div class="card text-white bg-primary">
+                <img src="{{ curse.image.url }}" height="350">
+                <div class="card-header">{{ curse.course }}</div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ curse.title }}</h4>
+                    <p class="card-text">{{ curse.body }}</p>
+                    <a href="{% url 'course' curse.id %}">
+                        <button type="button" class="btn btn-outline-info">View course</button>
+                    </a>
+                    <a href="">
+                        <button type="button" value="{{ curse.id }}"
+                                class="btn btn-outline-success" id="add-course">Add to My Profile</button>
+                    </a>
+                    {% if user.is_superuser %}
+                    <a href="{% url 'update' curse.id %}">
+                        <button type="button" class="btn btn-outline-warning">Update</button>
+                    </a>
+                    <a href="{% url 'delete' curse.id %}">
+                        <button type="button" class="btn btn-outline-danger">Delete</button>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<!--<script>-->
+<!--    $(document).on('click', '#add-course', function(e){-->
+<!--    e.preventDefault();-->
+<!--    $.ajax({-->
+<!--        type: 'POST',-->
+<!--        url: '',-->
+<!--        data: {-->
+<!--            course_id: $('#add-course').val(),-->
+<!--            csrfmiddlewaretoken: '{{ csrf_token }}',-->
+<!--            action: 'post'-->
+<!--        },-->
+
+<!--        success: function(json){-->
+<!--            console.log(json)-->
+<!--        }-->
+
+<!--        error: function(xhr, errmsg, err){-->
+
+<!--        }-->
+
+<!--    });-->
+<!--})-->
+
+<!--</script>-->
+
+{% endblock content %}

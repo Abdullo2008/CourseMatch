@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .container {
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+    h2 {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+    p {
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container">
+    {% if contacts %}
+    {% for contact in contacts %}
+    <h4>Username: {{ contact.name }}</h4>
+    <h4>Email: {{ contact.email }}</h4>
+    <p>Message: {{ contact.message }}</p><br>
+    {% endfor %}
+    {% else %}
+    <h2>No contacts yet</h2>
+    {% endif %}
+</div>
+{% endblock content %}

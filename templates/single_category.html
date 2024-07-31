@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Categories</h2><br>
+    {% for category in categories %}
+    <ul>
+        <li><a href="{% url 'single_category' category.id %}">{{ category.name }}</a></li>
+    </ul>
+    {% endfor %}
+    <h2>{{ category }}</h2>
+    <div class="row">
+        {% if curses %}
+        {% for curse in curses %}
+        <div class="col-md-4 mb-3">
+            <div class="card text-white bg-primary">
+                <img src="{{ curse.image.url }}" height="350">
+                <div class="card-header">{{ curse.course }}</div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ curse.title }}</h4>
+                    <p class="card-text">{{ curse.body }}</p>
+                    <a href="{% url 'course' curse.id %}">
+                        <button type="button" class="btn btn-outline-info">View course</button>
+                    </a>
+                    <a href="">
+                        <button type="button" value="{{ curse.id }}"
+                                class="btn btn-outline-success" id="add-course">Add to My Profile</button>
+                    </a>
+                    {% if user.is_superuser %}
+                    <a href="{% url 'update' curse.id %}">
+                        <button type="button" class="btn btn-outline-warning">Update</button>
+                    </a>
+                    <a href="{% url 'delete' curse.id %}">
+                        <button type="button" class="btn btn-outline-danger">Delete</button>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h2>There's no course in this category <a href="{% url 'courses' %}">Check other categories</a></h2>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock content %}

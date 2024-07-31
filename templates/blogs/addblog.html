@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br><br>
+<style>
+    .container {
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    p {
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container">
+    <h2>Add Blog</h2>
+    <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+            <fieldset>
+                <div>
+                    <label for="exampleSelect1" class="form-label mt-4">Course</label>
+                    <select class="form-select" id="exampleSelect1" name="course">
+                        {% for course in courses %}
+                        <option value="{{ course.id }}">{{ course.course }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="exampleTextarea" class="form-label mt-4">Blog</label>
+                    <textarea class="form-control" id="exampleTextarea" rows="3" name="blog"></textarea>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
+        </form>
+</div>
+<br><br>
+{% endblock content %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Page</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+        {% for curse in curses %}
+        <h2>Are you sure deleting {{ curse.course }}?</h2>
+        {% endfor %}
+    <form method="POST">{% csrf_token %}
+        <h2>Do you want to delete the course?</h2>
+
+        <input type="submit" class="btn btn-primary mt-4 ms-2" value="Delete" >
+        <a href="{% url 'courses' %}" style="margin-left: 10px;">Cancel</a>
+    </form>
+</body>
+</html>
+{% endblock content %}

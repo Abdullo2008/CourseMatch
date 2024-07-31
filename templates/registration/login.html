@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .container {
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    p {
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container">
+    <form class="windowlogscreen-content" method="POST">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="Username" name="username" placeholder="nickname">
+            <label for="Username">Username</label>
+        </div><br>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="password" name="password" placeholder="password">
+            <label for="password">Password</label>
+        </div><br>
+        <button type="submit" class="btn btn-outline-secondary">Login</button>
+
+    </form>
+</div>
+{% endblock content %}

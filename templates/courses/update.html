@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load form_filters %} <!-- Load the custom filter -->
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Update Course</h2>
+    <br><br>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <fieldset>
+            <div class="form-group">
+                <label for="{{ form.course.id_for_label }}" class="form-label mt-4">Course Name</label>
+                {{ form.course|add_class:"form-control" }}
+                {{ form.course.errors }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.image.id_for_label }}" class="form-label mt-4">Image</label>
+                {{ form.image|add_class:"form-control" }}
+                {{ form.image.errors }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.title.id_for_label }}" class="form-label mt-4">Title</label>
+                {{ form.title|add_class:"form-control" }}
+                {{ form.title.errors }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.body.id_for_label }}" class="form-label mt-4">Body</label>
+                {{ form.body|add_class:"form-control" }}
+                {{ form.body.errors }}
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="{{ form.category.id_for_label }}" class="form-label mt-4">Choose Category</label>
+                {{ form.category|add_class:"form-control" }}
+                {{ form.category.errors }}
+            </div><br>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

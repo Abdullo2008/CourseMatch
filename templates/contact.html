@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .container {
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+    h2 {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+    p {
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container">
+    <h2>Contact Us</h2>
+    <p>Your message will be sent to the administration.</p>
+    <form action="" method="POST">{% csrf_token %}
+        <div>
+            <label class="col-form-label mt-4" for="inputDefault">Name</label>
+            <input type="text" class="form-control" name="name" placeholder="Enter Your Name " id="inputDefault">
+        </div>
+        <fieldset>
+            <div>
+                <label for="exampleInputEmail1" class="form-label mt-4">Email</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                       name="email" placeholder="Enter Your Email">
+            </div>
+            <div>
+                <label for="exampleTextarea" class="form-label mt-4">Message</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3" name="message" placeholder="Enter Your Message"></textarea>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+    </form>
+</div>
+{% endblock content %}

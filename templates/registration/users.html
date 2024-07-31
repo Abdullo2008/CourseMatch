@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .container {
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    p {
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container">
+    {% if users %}
+    <h2>Here's all users</h2>
+    {% for user in users %}
+    <h4>Username N#{{ user.id }}: {{ user.username }}</h4>
+    {% endfor %}
+    {% else %}
+    <h2>There's no users yet</h2>
+    {% endif %}
+</div>
+
+
+{% endblock content %}
